@@ -1,0 +1,19 @@
+.timeline-week-duration {
+  font-weight: bold;
+}
+
+.timeline-week-balance-forward {
+  float: right;
+}
+
+.timeline-week-balance-forward.mod-good {
+    color: #5A8862;
+}
+
+.timeline-week-balance-forward.mod-low {
+    color: #C28700;
+}
+
+.timeline-week-balance-forward.mod-bad {
+    color: #CE0000;
+}

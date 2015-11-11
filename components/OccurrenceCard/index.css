@@ -1,0 +1,50 @@
+.occurrence-card {
+    background: #fff;
+    padding: 5px 60px 5px 5px;
+    border-radius: 2px;
+    box-shadow: #000 0 0 1px;
+    margin-bottom: 7px;
+}
+
+.occurrence-card {
+  border-left: solid 3px;
+  min-height: 50px;
+  position: relative;
+}
+
+.occurrence-card.mod-credit {
+  border-color: #5A8862;
+}
+
+.occurrence-card.mod-debit {
+  border-color: #CE0000;
+}
+
+.occurrence-card-title {
+  text-transform: uppercase;
+  color: #5C5C7D;
+}
+
+.occurrence-card-date {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 50px;
+    text-align: right;
+}
+
+.occurrence-card-amount {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 50px;
+  text-align: right;
+}
+
+.occurrence-card-amount.mod-credit {
+  color: #5A8862;
+}
+
+.occurrence-card-amount.mod-debit {
+  color: #CE0000;
+}

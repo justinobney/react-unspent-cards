@@ -1,0 +1,58 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.timeline-filter {
+  flex: 0 0 40px;
+  padding: 10px 50px;
+  border-bottom: solid 1px #C2C2C2;
+  box-shadow: #fff 0 0 2px;
+}
+
+.timeline-week {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
+  padding-top: 10px;
+}
+
+.timeline-week-nav {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 50px;
+}
+
+.timeline-week-nav-button {
+  border: none;
+  background: rgba(0,0,0,0.1);
+  font-size: 2.5rem;
+  text-shadow: #FFF 0 0 2px;
+}
+
+.timeline-week-nav-button:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+
+.timeline-week-track {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.timeline-week-header {
+  flex: 0 0 20px;
+  padding: 0 5px;
+}
+
+.timeline-week-occurrences {
+  flex: 1;
+  height: 100px;
+  overflow-y: scroll;
+  padding: 5px;
+}

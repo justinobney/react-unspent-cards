@@ -1,0 +1,27 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.app-wrapper-header {
+  flex: 0 0 60px;
+  background: #5A8862;
+  border-bottom: solid 1px #555;
+  box-shadow: #fff 0 0 1px;
+}
+
+.app-wrapper-header-brand {
+  margin: 10px 50px;
+  color: #FFF;
+  text-shadow: #333 1px 1px 1px;
+}
+
+.app-wrapper-main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+  background: #DADEE2;
+}
