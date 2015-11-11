@@ -1,11 +1,9 @@
 import React from 'react';
-import Timeline from 'Timeline/'
-import state from '../../state';
+import TimelineContainer from 'Timeline/container'
 import './index.css';
 
 let App = React.createClass({
   render: function() {
-    var weeks = state.weeks;
     return (
       <div className="app-wrapper">
         <header className="app-wrapper-header">
@@ -14,7 +12,7 @@ let App = React.createClass({
           </h1>
         </header>
         <main  className="app-wrapper-main">
-          <Timeline weeks={weeks} />
+          <TimelineContainer />
         </main>
       </div>
     );

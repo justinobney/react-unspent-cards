@@ -1,15 +1,39 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import { DropTarget } from 'react-dnd';
 import OccurrenceCard from 'OccurrenceCard';
 import './index.css';
 
+
+const weekTarget = {
+  canDrop(props) {
+    return true;
+  },
+
+  drop(props, monitor) {
+    let source = monitor.getItem();
+    setTimeout(() => alert(`moved ${source.title} (${source.date}) to ${props.date}`), 10);
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
+  };
+}
+
 let Week = React.createClass({
   propTypes: {
-    balance: React.PropTypes.number.isRequired,
-    cards: React.PropTypes.array.isRequired,
-    date: React.PropTypes.string.isRequired
+    balance: PropTypes.number.isRequired,
+    cards: PropTypes.array.isRequired,
+    date: PropTypes.string.isRequired,
+    isOver: PropTypes.bool.isRequired,
+    canDrop: PropTypes.bool.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
   },
   render: function() {
-    let {balance, cards, date} = this.props;
+    let {balance, cards, date, isOver, canDrop, connectDropTarget} = this.props;
     let level = '';
     switch (true) {
       case balance > 350:
@@ -21,17 +45,17 @@ let Week = React.createClass({
       default:
         level = 'bad';
     }
-    return (
-      <div className='timeline-week-track'>
-        <div className="timeline-week-header">
-          <span className="timeline-week-duration">
+    return connectDropTarget(
+      <div className={`week-track ${(isOver && canDrop) ? `mod-drag-over` : ''}`}>
+        <div className="week-header">
+          <span className="week-duration">
             {date}
           </span>
-          <span className={`timeline-week-balance-forward mod-${level}`}>
+          <span className={`week-balance-forward mod-${level}`}>
             {`$${balance.toFixed(2)}`}
           </span>
         </div>
-        <div className="timeline-week-occurrences">
+        <div className="week-occurrences">
           {cards.map(card => <OccurrenceCard {...card} />)}
         </div>
       </div>
@@ -39,4 +63,4 @@ let Week = React.createClass({
   }
 });
 
-export default Week;
+export default DropTarget('OccurrenceCard', weekTarget, collect)(Week);

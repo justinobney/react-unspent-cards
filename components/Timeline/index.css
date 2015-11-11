@@ -36,23 +36,3 @@
 .timeline-week-nav-button:hover {
   background: rgba(0,0,0,0.2);
 }
-
-
-.timeline-week-track {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  flex: 1;
-}
-
-.timeline-week-header {
-  flex: 0 0 20px;
-  padding: 0 5px;
-}
-
-.timeline-week-occurrences {
-  flex: 1;
-  height: 100px;
-  overflow-y: scroll;
-  padding: 5px;
-}

@@ -1,4 +1,7 @@
-export default {
+import React from 'react';
+import Timeline from 'Timeline'
+
+let state = {
   weeks: [
     {
       balance: 235.00,
@@ -45,3 +48,17 @@ export default {
     }
   ]
 };
+
+let App = React.createClass({
+  getInitialState: function() {
+    return state;
+  },
+  render: function() {
+    var {weeks} = this.state;
+    return (
+      <Timeline weeks={weeks} />
+    );
+  }
+});
+
+export default App;

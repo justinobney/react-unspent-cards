@@ -1,19 +1,42 @@
-.timeline-week-duration {
+.week-track {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.week-track.mod-drag-over {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.week-header {
+  flex: 0 0 20px;
+  padding: 0 5px;
+}
+
+.week-duration {
   font-weight: bold;
 }
 
-.timeline-week-balance-forward {
+.week-balance-forward {
   float: right;
 }
 
-.timeline-week-balance-forward.mod-good {
+.week-balance-forward.mod-good {
     color: #5A8862;
 }
 
-.timeline-week-balance-forward.mod-low {
+.week-balance-forward.mod-low {
     color: #C28700;
 }
 
-.timeline-week-balance-forward.mod-bad {
+.week-balance-forward.mod-bad {
     color: #CE0000;
+}
+
+.week-occurrences {
+  flex: 1;
+  height: 100px;
+  overflow-y: scroll;
+  padding: 5px;
 }

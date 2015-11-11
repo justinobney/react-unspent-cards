@@ -1,11 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import RedBox from 'redbox-react';
 import App from './components/App/'
 
 const root = document.querySelector("#mount");
 
 try {
-  React.render(<App />, root)
+  ReactDOM.render(<App />, root)
 } catch (e) {
-  React.render(<RedBox error={e} />, root)
+  ReactDOM.render(<RedBox error={e} />, root)
 }

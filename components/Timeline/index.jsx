@@ -1,5 +1,7 @@
 import React from 'react';
-import Week from 'Week/'
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import Week from 'Week'
 import './index.css';
 
 let Timeline = React.createClass({
@@ -33,4 +35,4 @@ let Timeline = React.createClass({
   }
 });
 
-export default Timeline;
+export default DragDropContext(HTML5Backend)(Timeline);

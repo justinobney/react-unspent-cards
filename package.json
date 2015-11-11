@@ -34,7 +34,10 @@
     "moment": "^2.10.6",
     "pleasejs": "^0.4.2",
     "radium": "^0.14.1",
-    "react": "^0.13.3",
+    "react": "^0.14.1",
+    "react-dnd": "^2.0.2",
+    "react-dnd-html5-backend": "^2.0.0",
+    "react-dom": "^0.14.2",
     "redbox-react": "^1.0.5"
   },
   "devDependencies": {
