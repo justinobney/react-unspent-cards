@@ -31,6 +31,7 @@
     "es6-react-mixins": "^0.1.8",
     "firebase": "^2.2.9",
     "json-loader": "^0.5.2",
+    "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "pleasejs": "^0.4.2",
     "radium": "^0.14.1",

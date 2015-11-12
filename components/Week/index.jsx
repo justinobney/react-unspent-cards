@@ -11,7 +11,13 @@ const weekTarget = {
 
   drop(props, monitor) {
     let source = monitor.getItem();
-    setTimeout(() => alert(`moved ${source.title} (${source.date}) to ${props.date}`), 10);
+    if(props.onCardDrop){
+      props.onCardDrop({
+        targetWeekId: props.id,
+        sourceWeekId: source.weekId,
+        cardId: source.id
+      });
+    }
   }
 };
 
@@ -31,9 +37,10 @@ let Week = React.createClass({
     isOver: PropTypes.bool.isRequired,
     canDrop: PropTypes.bool.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
+    onCardDrop: PropTypes.func
   },
-  render: function() {
-    let {balance, cards, date, isOver, canDrop, connectDropTarget} = this.props;
+  render() {
+    let {id, balance, cards, date, isOver, canDrop, connectDropTarget} = this.props;
     let level = '';
     switch (true) {
       case balance > 350:
@@ -56,7 +63,7 @@ let Week = React.createClass({
           </span>
         </div>
         <div className="week-occurrences">
-          {cards.map(card => <OccurrenceCard {...card} />)}
+          {cards.map(card => <OccurrenceCard {...card} weekId={id} />)}
         </div>
       </div>
     );

@@ -10,16 +10,18 @@
 }
 
 .week-header {
-  flex: 0 0 20px;
+  flex: 0 0 25px;
   padding: 0 5px;
 }
 
 .week-duration {
-  font-weight: bold;
+  line-height: 3.2rem;
 }
 
 .week-balance-forward {
   float: right;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .week-balance-forward.mod-good {
