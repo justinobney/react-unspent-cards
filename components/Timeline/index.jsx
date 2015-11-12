@@ -1,12 +1,14 @@
-import React from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import React, {PropTypes} from 'react';
 import Week from 'Week'
 import './index.css';
 
 let Timeline = React.createClass({
-  render: function() {
-    var {weeks} = this.props;
+  propTypes: {
+    weeks: PropTypes.array.isRequired,
+    onCardDrop: PropTypes.func
+  },
+  render() {
+    let {weeks, onCardDrop} = this.props;
     return (
       <div className="timeline">
         <div className="timeline-filter">
@@ -23,7 +25,7 @@ let Timeline = React.createClass({
               <i className="fa fa-chevron-left"></i>
             </button>
           </div>
-          {weeks.map((week, idx) => <Week {...week} />)}
+          {weeks.map((week, idx) => <Week {...week} onCardDrop={onCardDrop} />)}
           <div className="timeline-week-nav">
             <button className="timeline-week-nav-button mod-last">
               <i className="fa fa-chevron-right"></i>
@@ -35,4 +37,4 @@ let Timeline = React.createClass({
   }
 });
 
-export default DragDropContext(HTML5Backend)(Timeline);
+export default Timeline;
