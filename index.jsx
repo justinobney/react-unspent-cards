@@ -1,12 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
+import { Provider } from 'react-redux'
 import RedBox from 'redbox-react';
-import App from './components/App/'
+import App from './components/App/';
+import store from './redux/create.js'
 
 const root = document.querySelector("#mount");
 
 try {
-  ReactDOM.render(<App />, root)
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    root);
 } catch (e) {
-  ReactDOM.render(<RedBox error={e} />, root)
+  render(<RedBox error={e} />, root)
 }

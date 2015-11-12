@@ -2,6 +2,7 @@
 import React, {PropTypes} from 'react';
 import { DropTarget } from 'react-dnd';
 import OccurrenceCard from 'OccurrenceCard';
+import {moveOccurrence} from '../../redux/modules/weeks'
 import './index.css';
 
 
@@ -11,6 +12,12 @@ const weekTarget = {
   },
   drop(props, monitor) {
     let source = monitor.getItem();
+    let {dispatch, onCardDrop} = props;
+    dispatch(moveOccurrence({
+      targetWeekId: props.id,
+      sourceWeekId: source.weekId,
+      cardId: source.id
+    }));
     if(props.onCardDrop){
       props.onCardDrop({
         targetWeekId: props.id,
@@ -31,6 +38,7 @@ function collect(connect, monitor) {
 
 let Week = React.createClass({
   propTypes: {
+    id: PropTypes.number.isRequired,
     balance: PropTypes.number.isRequired,
     cards: PropTypes.array.isRequired,
     date: PropTypes.string.isRequired,
