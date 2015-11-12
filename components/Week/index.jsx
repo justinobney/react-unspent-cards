@@ -1,3 +1,4 @@
+// Week Component
 import React, {PropTypes} from 'react';
 import { DropTarget } from 'react-dnd';
 import OccurrenceCard from 'OccurrenceCard';
@@ -8,7 +9,6 @@ const weekTarget = {
   canDrop(props) {
     return true;
   },
-
   drop(props, monitor) {
     let source = monitor.getItem();
     if(props.onCardDrop){

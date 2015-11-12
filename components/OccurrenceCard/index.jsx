@@ -1,10 +1,9 @@
+// OccurrenceCard Component
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import './index.css';
 
-/**
- * Implements the drag source contract.
- */
+// Implements the drag source contract.
 const cardSource = {
   canDrag(props, monitor){
     return !props.processed && !props.saving
@@ -15,9 +14,7 @@ const cardSource = {
   }
 };
 
-/**
- * Specifies the props to inject into your component.
- */
+// Specifies the props to inject into your component.
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),

@@ -1,3 +1,4 @@
+// Timeline Component
 import React, {PropTypes} from 'react';
 import Week from 'Week'
 import './index.css';

@@ -1,3 +1,4 @@
+// TimelineContainer Component
 import React from 'react';
 import Timeline from 'Timeline'
 import findIndex from 'lodash/array/findIndex';
@@ -57,7 +58,7 @@ let state = {
   ]
 };
 
-let App = React.createClass({
+let TimelineContainer = React.createClass({
   getInitialState() {
     return state;
   },
@@ -89,4 +90,4 @@ let App = React.createClass({
   }
 });
 
-export default App;
+export default TimelineContainer;
