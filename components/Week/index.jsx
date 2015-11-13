@@ -38,29 +38,31 @@ function collect(connect, monitor) {
   };
 }
 
+function getBalanceLevel(balance){
+  switch (true) {
+    case balance > 350:
+      return 'good';
+    case balance > 0:
+      return 'low';
+    default:
+      return 'bad';
+  }
+}
+
 let Week = React.createClass({
   propTypes: {
     id: PropTypes.string.isRequired,
     balance: PropTypes.number.isRequired,
     cards: PropTypes.array.isRequired,
+    onCardDrop: PropTypes.func,
+
     isOver: PropTypes.bool.isRequired,
     canDrop: PropTypes.bool.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
-    onCardDrop: PropTypes.func
+    connectDropTarget: PropTypes.func.isRequired
   },
   render() {
     let {id, balance, cards, date, isOver, canDrop, connectDropTarget} = this.props;
-    let level = '';
-    switch (true) {
-      case balance > 350:
-        level = 'good';
-        break;
-      case balance > 0:
-        level = 'low';
-        break;
-      default:
-        level = 'bad';
-    }
+    let level = getBalanceLevel(balance);
     return connectDropTarget(
       <div className={`week-track ${(isOver && canDrop) ? `mod-drag-over` : ''}`}>
         <div className="week-header">
