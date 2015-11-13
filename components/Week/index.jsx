@@ -1,9 +1,17 @@
 // Week Component
 import React, {PropTypes} from 'react';
 import { DropTarget } from 'react-dnd';
+import moment from 'moment';
 import OccurrenceCard from 'OccurrenceCard';
-import {moveOccurrence} from '../../redux/modules/weeks'
 import './index.css';
+
+const dateFormat = {
+  sameDay: '[Today]',
+  nextDay: '[Tomorrow]',
+  nextWeek: 'dddd',
+  lastDay: '[Yesterday]',
+  lastWeek: '[Last] dddd'
+};
 
 
 const weekTarget = {
@@ -12,12 +20,6 @@ const weekTarget = {
   },
   drop(props, monitor) {
     let source = monitor.getItem();
-    let {dispatch, onCardDrop} = props;
-    dispatch(moveOccurrence({
-      targetWeekId: props.id,
-      sourceWeekId: source.weekId,
-      cardId: source.id
-    }));
     if(props.onCardDrop){
       props.onCardDrop({
         targetWeekId: props.id,
@@ -38,10 +40,9 @@ function collect(connect, monitor) {
 
 let Week = React.createClass({
   propTypes: {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     balance: PropTypes.number.isRequired,
     cards: PropTypes.array.isRequired,
-    date: PropTypes.string.isRequired,
     isOver: PropTypes.bool.isRequired,
     canDrop: PropTypes.bool.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
@@ -64,14 +65,14 @@ let Week = React.createClass({
       <div className={`week-track ${(isOver && canDrop) ? `mod-drag-over` : ''}`}>
         <div className="week-header">
           <span className="week-duration">
-            {date}
+            {moment(date).calendar(null, dateFormat)}
           </span>
           <span className={`week-balance-forward mod-${level}`}>
             {`$${balance.toFixed(2)}`}
           </span>
         </div>
         <div className="week-occurrences">
-          {cards.map(card => <OccurrenceCard {...card} weekId={id} />)}
+          {cards.map(card => <OccurrenceCard {...card}  key={card.id} weekId={id} />)}
         </div>
       </div>
     );

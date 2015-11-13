@@ -1,12 +1,23 @@
 // OccurrenceCard Component
 import React from 'react';
 import { DragSource } from 'react-dnd';
+import moment from 'moment';
 import './index.css';
+
+const dateFormat = {
+  sameDay: '[Today]',
+  nextDay: '[Tom]',
+  nextWeek: 'MMM D',
+  lastDay: '[Yesterday]',
+  lastWeek: '[Last] MMM D',
+  sameElse: 'MMM D'
+};
+
 
 // Implements the drag source contract.
 const cardSource = {
   canDrag(props, monitor){
-    return !props.processed && !props.saving
+    return !props.processed && !props.saving && props.type == 'debit';
   },
   beginDrag(props) {
     let {id, weekId} = props;
@@ -24,15 +35,13 @@ function collect(connect, monitor) {
 
 let OccurrenceCard = React.createClass({
   propTypes: {
-    id: React.PropTypes.number.isRequired,
+    id: React.PropTypes.string.isRequired,
     amount: React.PropTypes.number.isRequired,
-    date: React.PropTypes.string.isRequired,
     late: React.PropTypes.bool,
     saving: React.PropTypes.bool,
     type: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
-    weekId: React.PropTypes.number.isRequired,
-    // Injected by React DnD:
+    weekId: React.PropTypes.string.isRequired,
     isDragging: React.PropTypes.bool.isRequired,
     connectDragSource: React.PropTypes.func.isRequired
   },
@@ -60,12 +69,12 @@ let OccurrenceCard = React.createClass({
           {processed ? ` ${title}` : title}
         </div>
         <div className="occurrence-card-date">
-          {
-            !!late &&
-            <i className="fa fa-exclamation text-danger" title="late" />
-          }
-          <span title={`Week Id: ${weekId}`}>{date}</span>
+          <span title={`Week Id: ${weekId}`}>{moment(date).calendar(null, dateFormat)}</span>
         </div>
+        {
+          !!late &&
+          <span className="occurrence-card-late-indicator">late</span>
+        }
         <div className={`occurrence-card-amount mod-${type}`}>
           {type == 'credit' ? amount : `-${amount}`}
         </div>

@@ -7,7 +7,7 @@
 }
 
 .occurrence-card {
-  border-left: solid 8px;
+  border-left: solid 15px;
   min-height: 50px;
   position: relative;
 }
@@ -33,6 +33,22 @@
     text-align: right;
 }
 
+.occurrence-card-late-indicator {
+    position: absolute;
+    top: 14px;
+    left: -28px;
+    transform: translate(0px) rotate(90deg);
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: #000 0px 0px 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.occurrence-card-late-indicator > span{
+  transform: translate(0px) rotate(-90deg);
+}
+
 .occurrence-card-amount {
   position: absolute;
   right: 5px;
@@ -48,6 +64,7 @@
 .occurrence-card-amount.mod-debit {
   color: #CE0000;
 }
+
 .occurrence-card-saving {
     position: absolute;
     top: 0;

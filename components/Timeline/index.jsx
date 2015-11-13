@@ -26,7 +26,7 @@ let Timeline = React.createClass({
               <i className="fa fa-chevron-left"></i>
             </button>
           </div>
-          {weeks.map((week, idx) => <Week {...week} onCardDrop={onCardDrop} />)}
+          {weeks.map((week, idx) => <Week {...week} key={week.id} onCardDrop={onCardDrop} />)}
           <div className="timeline-week-nav">
             <button className="timeline-week-nav-button mod-last">
               <i className="fa fa-chevron-right"></i>

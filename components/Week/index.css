@@ -16,6 +16,8 @@
 
 .week-duration {
   line-height: 3.2rem;
+  font-weight: bold;
+  font-size: 1.7rem;
 }
 
 .week-balance-forward {
