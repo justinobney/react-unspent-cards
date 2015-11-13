@@ -4,12 +4,9 @@
     border-radius: 2px;
     box-shadow: #000 0 0 1px;
     margin-bottom: 7px;
-}
-
-.occurrence-card {
-  border-left: solid 15px;
-  min-height: 50px;
-  position: relative;
+    border-left: solid 15px;
+    min-height: 50px;
+    position: relative;
 }
 
 .occurrence-card.mod-credit {
