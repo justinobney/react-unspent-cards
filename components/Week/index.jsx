@@ -15,8 +15,8 @@ const dateFormat = {
 
 
 const weekTarget = {
-  canDrop(props) {
-    return true;
+  canDrop(props, monitor) {
+    return monitor.getItem().weekId !== props.id;
   },
   drop(props, monitor) {
     let source = monitor.getItem();
